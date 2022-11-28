@@ -10,10 +10,8 @@ public class UnityInput : InputDatas
         
     }
 
-    public Vector2 Arrows{
-        get{
-            return new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        }
+    public Vector2 Arrows(){
+        return new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
     }
 
 }

@@ -8,12 +8,11 @@ public interface InputDatas{
     //使用或關閉
     void GamePlayerActive(bool type);
     //以下被其他class獲取
-    Vector2 Arrows{get;}
+    Vector2 Arrows();
 }
 //負責操控inputSystem
 public class TakeInputSystem : InputDatas
 {
-    private Vector2 move;
     private InputSystem inputSystem;
 
     public TakeInputSystem(){
@@ -25,11 +24,8 @@ public class TakeInputSystem : InputDatas
     }
 
     //獲取玩家輸入的Vector2座標
-    public Vector2 Arrows{
-        get{
-            move = inputSystem.GamePlayer.Move.ReadValue<Vector2>();
-            return move;
-        }
+    public Vector2 Arrows(){
+        return inputSystem.GamePlayer.Move.ReadValue<Vector2>();
     }
 
     //inputSystem的開關功能
