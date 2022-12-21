@@ -1,17 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NSArrows;
 
 public class Player : MonoBehaviour
 {
-    private IArrows iarrows;//使用iarrows介面
+    [SerializeField]
+    private Vector2 Move = Vector2.zero;
+    private IArrows iarrows;//use iarrows interface
+    
 
-    void Awake()
-    {
-        this.iarrows = new ForPlayerInput();//使用iarrows，挑選ForPlayerInput
+    private void Awake(){
+        this.iarrows = new ForPlayerInput();//use iarrows ,select ForPlayerInput
+        var tester = 10;
+        Debug.Log(tester);
+        tester = 55;
+        Debug.Log(tester);
     }
 
-    void FixedUpdate(){
-        Debug.Log(iarrows.LoadArrows());//從iarrows取Vector2值
+    private void FixedUpdate(){
+        Move = iarrows.LoadArrows();
+    }
+
+    private void OnGUI(){
+        GUI.Label(new Rect(10,10,600,50),"Player Move:" + Move);
     }
 }

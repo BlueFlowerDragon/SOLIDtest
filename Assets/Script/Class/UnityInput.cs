@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NSInputData;
 
 public class UnityInput : InputDatas
 {
-    
-    //¤º«Øunity¿é¤J¨S¦³½Õ¾ã¥\¯à¡A¤¶­±»Ý­n´£¨Ñ¡A¦Ó¼gªÅ¹ê§@
+    //ï¿½ï¿½ï¿½ï¿½unityï¿½ï¿½Jï¿½Sï¿½ï¿½ï¿½Õ¾ï¿½\ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Ý­nï¿½ï¿½ï¿½Ñ¡Aï¿½Ó¼gï¿½Å¹ï¿½@
     public void GamePlayerActive(bool type){
         
     }
 
-    public Vector2 Arrows(){
-        return new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+    public Vector2 Arrows{
+        get{
+            return new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        }
     }
 
 }

@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-//獲取方向鍵介面
-public interface IArrows{
-    Vector2 LoadArrows();
-}
+using NSArrows;
+using NSInputData;
 
 public class ForPlayerInput : IArrows
 {
-    private InputDatas inputdatas;//使用InputDatas介面
-    private SendInputwithvary sendInput;//使用SendInputwithvary介面
+    private InputDatas inputdatas;//use InputDatas Interface
+    private SendInputWitHvary sendInput;//use XXX Interface
 
     public ForPlayerInput(){
         this.inputdatas = new TakeInputSystem();
@@ -19,18 +14,18 @@ public class ForPlayerInput : IArrows
     }
 
 	public Vector2 LoadArrows(){
-        Vector2 Arrows = inputdatas.Arrows();
+        Vector2 Arrows = this.inputdatas.Arrows;
         if(sendInput == null){
             return Arrows;
         }else{
-            return sendInput.Move(Arrows);//根據Leg和Ray方向決定輸出
+            return sendInput.Move(Arrows);//Take Leg and Ray,output direction
         }
     }
 
     private void UseAdjust(){
-        this.sendInput = new InputAdjust();//使用InputAdjust的輸入調整器
-        this.sendInput.BasicLegSet = 0.9f;
-        this.sendInput.RayZoneSet = 75;
+        this.sendInput = new InputAdjust();//use InputAdjust redress
+        this.sendInput.BasicLegSet = PlayerPrefs.GetFloat("Leg", 0.6f);//need fixed
+        this.sendInput.RayZoneSet = PlayerPrefs.GetInt("RayZone", 55);//need fixed
     }
 
 }

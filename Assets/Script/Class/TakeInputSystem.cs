@@ -1,39 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using NSInputData;
 
-//InputSystem´£¨Ñ¥\¯à¤¶­±
-public interface InputDatas{
-    //¨Ï¥Î©ÎÃö³¬
-    void GamePlayerActive(bool type);
-    //¥H¤U³Q¨ä¥LclassÀò¨ú
-    Vector2 Arrows();
-}
-//­t³d¾Þ±±inputSystem
+//ï¿½tï¿½dï¿½Þ±ï¿½inputSystem
 public class TakeInputSystem : InputDatas
 {
     private InputSystem inputSystem;
 
     public TakeInputSystem(){
-        inputSystem = new InputSystem();//ªì©l¤Æ¡AinputSystem¤@©w­n°õ¦æ¦¹¦æµ{¦¡½X
+        inputSystem = new InputSystem();//ï¿½ï¿½lï¿½Æ¡AinputSystemï¿½@ï¿½wï¿½nï¿½ï¿½ï¿½æ¦¹ï¿½ï¿½{ï¿½ï¿½ï¿½X
     }
 
-    public void GamePlayerActive(bool type){
-        SetGamePlayer(type);
+    public void GamePlayerActive(bool bulb){
+        SetGamePlayer(bulb);
     }
 
-    //Àò¨úª±®a¿é¤JªºVector2®y¼Ð
-    public Vector2 Arrows(){
-        return inputSystem.GamePlayer.Move.ReadValue<Vector2>();
-    }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½Jï¿½ï¿½Vector2ï¿½yï¿½ï¿½
+    public Vector2 Arrows => inputSystem.GamePlayer.Move.ReadValue<Vector2>();
+    //return inputSystem.GamePlayer.Move.ReadValue<Vector2>();
+    
 
-    //inputSystemªº¶}Ãö¥\¯à
-    private void SetGamePlayer(bool type){
-        if(type){
-            inputSystem.GamePlayer.Enable();//¨Ï¥ÎinputSystem.GamePlayer
+    //inputSystemï¿½ï¿½ï¿½}ï¿½ï¿½ï¿½\ï¿½ï¿½
+    private void SetGamePlayer(bool bulb){
+        if(bulb){
+            inputSystem.GamePlayer.Enable();//ï¿½Ï¥ï¿½inputSystem.GamePlayer
         }else{
-            inputSystem.GamePlayer.Disable();//°±¥ÎinputSystem.GamePlayer
+            inputSystem.GamePlayer.Disable();//ï¿½ï¿½ï¿½ï¿½inputSystem.GamePlayer
         }
     }
     
